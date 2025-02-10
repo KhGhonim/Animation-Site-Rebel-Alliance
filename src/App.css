@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+  
+}
+.permanent-marker-regular {
+  font-family: "Permanent Marker", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+#SVG{
+  height: 150px;
+  width: 150px;
+  stroke: white;
+  fill-opacity: 0;
+  stroke-width: 3px;
+  stroke-dasharray: 4500;
+  animation: draw 8s ease forwards;
+}
+
+@keyframes draw {
+  0%{
+    stroke-dashoffset: 4500;
+  }
+  100%{
+    stroke-dashoffset: 0;
+  }
+}
+
+#trianglePic{
+  height: 50px;
+  width: 50px;
+  stroke: #18FFFF;
+  fill-opacity: 0;
+  stroke-width: 5px;
+  stroke-dasharray: 4500;
+  animation: draw 8s ease forwards;
+}
+
+#CircleToPentagon1{
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+}
+#CircleToPentagon2{
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+}
