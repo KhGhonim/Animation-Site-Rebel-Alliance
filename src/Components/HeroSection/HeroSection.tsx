@@ -1,13 +1,12 @@
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { useEffect } from "react";
 
 interface HeroSectionProps {
   setLoading: (value: boolean) => void;
 }
-gsap.registerPlugin(useGSAP);
 
 function HeroSection({ setLoading }: HeroSectionProps) {
-  useGSAP(() => {
+  useEffect(() => {
     const tl = gsap.timeline();
     tl.fromTo(
       ".bgPic",

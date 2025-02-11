@@ -1,145 +1,144 @@
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-gsap.registerPlugin(useGSAP);
+import { useEffect } from "react";
 
 function TextSections() {
-  useGSAP(() => {
-      const tl1 = gsap.timeline();
-      const tl2 = gsap.timeline();
-      const tl3 = gsap.timeline();
-      const tl4 = gsap.timeline();
-      const tl5 = gsap.timeline();
-      const tl6 = gsap.timeline();
-      const tl7 = gsap.timeline();
-      const screenWidth = window.innerWidth;
-      const movement = screenWidth * 0.24;
+  useEffect(() => {
+    const tl1 = gsap.timeline();
+    const tl2 = gsap.timeline();
+    const tl3 = gsap.timeline();
+    const tl4 = gsap.timeline();
+    const tl5 = gsap.timeline();
+    const tl6 = gsap.timeline();
+    const tl7 = gsap.timeline();
+    const screenWidth = window.innerWidth;
+    const movement = screenWidth * 0.24;
 
-      tl1
-        .from("#CircleToPentagon1", {
-          x: -30,
-          width: "0.5rem",
-          height: "0.5rem",
-          borderRadius: "50%",
-        })
-        .to("#CircleToPentagon1", {
-          x: 500,
-          duration: 1.8,
-          ease: "power3.inOut",
-        })
-        .to("#CircleToPentagon1", {
-          x: 0,
-          delay: 1.3,
-          width: "1.50rem",
-          height: "1.50rem",
-          duration: 2,
-          ease: "power3.inOut",
-          borderRadius: "0%",
-        });
+    tl1
+      .from("#CircleToPentagon1", {
+        x: -30,
+        width: "0.5rem",
+        height: "0.5rem",
+        borderRadius: "50%",
+      })
+      .to("#CircleToPentagon1", {
+        x: 500,
+        duration: 1.8,
+        ease: "power3.inOut",
+      })
+      .to("#CircleToPentagon1", {
+        x: 0,
+        delay: 1.3,
+        width: "1.50rem",
+        height: "1.50rem",
+        duration: 2,
+        ease: "power3.inOut",
+        borderRadius: "0%",
+      });
 
-      tl2
-        .from("#CircleToPentagon2", {
-          x: 30,
-          width: "0.5rem",
-          height: "0.5rem",
-          borderRadius: "50%",
-        })
-        .to("#CircleToPentagon2", {
-          x: -500,
-          duration: 1.8,
-          ease: "power3.inOut",
-        })
-        .to("#CircleToPentagon2", {
-          x: 0,
-          delay: 1.3,
-          width: "1.50rem",
-          height: "1.50rem",
-          duration: 2,
-          ease: "power3.inOut",
-          borderRadius: "0%",
-        });
+    tl2
+      .from("#CircleToPentagon2", {
+        x: 30,
+        width: "0.5rem",
+        height: "0.5rem",
+        borderRadius: "50%",
+      })
+      .to("#CircleToPentagon2", {
+        x: -500,
+        duration: 1.8,
+        ease: "power3.inOut",
+      })
+      .to("#CircleToPentagon2", {
+        x: 0,
+        delay: 1.3,
+        width: "1.50rem",
+        height: "1.50rem",
+        duration: 2,
+        ease: "power3.inOut",
+        borderRadius: "0%",
+      });
 
-      tl3.fromTo(
-        "#first",
+    tl3.fromTo(
+      "#first",
+      {
+        opacity: 0,
+        y: 100,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 2,
+        ease: "power3.inOut",
+        delay: 4.4,
+      }
+    );
+
+    tl4
+      .fromTo(
+        "#second",
         {
+          scale: 0,
           opacity: 0,
-          y: 100,
         },
         {
+          scale: 1,
+          duration: 1,
           opacity: 1,
-          y: 0,
-          duration: 2,
+          color: "transparent",
+          webkitTextStroke: "0.5px #ffffff",
           ease: "power3.inOut",
-          delay: 4.4,
+          delay: 3.8,
         }
-      );
+      )
+      .to("#second", {
+        scale: 1.5,
+        duration: 2.8,
+        opacity: 1,
+        color: "#00ffff",
+        webkitTextStroke: "0px #00ffff",
+        ease: "power3.inOut",
+      });
 
-      tl4
-        .fromTo(
-          "#second",
-          {
-            scale: 0,
-            opacity: 0,
-          },
-          {
-            scale: 1,
-            duration: 1,
-            opacity: 1,
-            color: "transparent",
-            webkitTextStroke: "0.5px #ffffff",
-            ease: "power3.inOut",
-            delay: 3.8,
-          }
-        )
-        .to("#second", {
-          scale: 1.5,
-          duration: 2.8,
-          opacity: 1,
-          color: "#00ffff",
-          webkitTextStroke: "0px #00ffff",
-          ease: "power3.inOut",
-        });
+    tl5
+      .to("#third", {
+        x: movement,
+        duration: 2,
+        ease: "power3.inOut",
+      })
+      .to("#third", { duration: 2 })
+      .to("#third", {
+        x: 0,
+        duration: 2,
+        ease: "power3.inOut",
+      });
+    tl6
+      .to("#fourth", {
+        x: -movement,
+        duration: 2,
+        ease: "power3.inOut",
+      })
+      .to("#fourth", { duration: 2 })
+      .to("#fourth", {
+        x: 0,
+        duration: 2,
+        ease: "power3.inOut",
+      });
 
-      tl5
-        .to("#third", {
-          x: movement,
-          duration: 2,
-          ease: "power3.inOut",
-        })
-        .to("#third", { duration: 2 })
-        .to("#third", {
-          x: 0,
-          duration: 2,
-          ease: "power3.inOut",
-        });
-      tl6
-        .to("#fourth", {
-          x: -movement,
-          duration: 2,
-          ease: "power3.inOut",
-        })
-        .to("#fourth", { duration: 2 })
-        .to("#fourth", {
-          x: 0,
-          duration: 2,
-          ease: "power3.inOut",
-        });
-
-      tl7.fromTo(
-        ".boxes div",
-        {
-          opacity: 0,
-          x: 200,
-        },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 2,
-          ease: "power3.inOut",
-          delay: 4.4,
-          stagger: 0.3,
-        }
-      );
-  });
+    tl7.fromTo(
+      ".boxes div",
+      {
+        opacity: 0,
+        x: 200,
+      },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 2,
+        ease: "power3.inOut",
+        delay: 4.4,
+        stagger: 0.3,
+      }
+    );
+  }, []);
   return (
     <div className="flex w-full h-full z-30 absolute inset-0 justify-center items-center px-10">
       <div

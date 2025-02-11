@@ -1,5 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
+import { useEffect } from "react";
 gsap.registerPlugin(useGSAP);
 
 interface DropDownProps {
@@ -8,9 +9,9 @@ interface DropDownProps {
   Classes: string;
 }
 function DropDown({ title, dropDownItems, Classes }: DropDownProps) {
-useGSAP(() => {
+  useEffect(() => {
     const tl = gsap.timeline();
-  
+
     tl.from("#dropDown", { x: 50 })
       .to("#dropDown", { duration: 3 })
       .to("#dropDown", { x: 0, duration: 1.5, ease: "power3.in" })
@@ -23,7 +24,7 @@ useGSAP(() => {
         },
         "-=0.8"
       );
-})
+  }, []);
   return (
     <div
       id="dropDown"

@@ -1,27 +1,25 @@
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-
-gsap.registerPlugin(useGSAP);
+import { useEffect } from "react";
 
 function TringleAndPhoto() {
-  useGSAP(() => {
-      const tl1 = gsap.timeline({});
-      const tl2 = gsap.timeline({});
-      tl1.from("#trianglePic", { y: 120, opacity: 0 }).to("#trianglePic", {
-        y: 0,
+  useEffect(() => {
+    const tl1 = gsap.timeline({});
+    const tl2 = gsap.timeline({});
+    tl1.from("#trianglePic", { y: 120, opacity: 0 }).to("#trianglePic", {
+      y: 0,
+      delay: 3,
+      duration: 2,
+      opacity: 1,
+    });
+    tl2
+      .from("#Selfmade_by_NICF", { x: -1500, opacity: 0 })
+      .to("#Selfmade_by_NICF", {
+        x: 0,
         delay: 3,
-        duration: 2,
+        duration: 2.5,
         opacity: 1,
       });
-      tl2
-        .from("#Selfmade_by_NICF", { x: -1500, opacity: 0 })
-        .to("#Selfmade_by_NICF", {
-          x: 0,
-          delay: 3,
-          duration: 2.5,
-          opacity: 1,
-        });
-  });
+  }, []);
   return (
     <>
       <div className=" w-full z-30">

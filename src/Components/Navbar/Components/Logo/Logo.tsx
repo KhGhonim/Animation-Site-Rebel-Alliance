@@ -1,14 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
 import { Link } from "react-router-dom";
-
-gsap.registerPlugin(useGSAP);
-
 export default function Logo() {
   const [logoSrc, setLogoSrc] = useState("Rectangle black.svg");
   const [vectorSrc, setVectorSrc] = useState("Vector Blue.svg");
-  useGSAP(() => {
+  useEffect(() => {
     const tl = gsap.timeline();
     tl.fromTo(
       "#LogoPic",
@@ -17,7 +13,7 @@ export default function Logo() {
         y: window.innerHeight - 100,
       },
       {
-        opacity: 1,
+        opacity: 1, 
         duration: 2,
         y: window.innerHeight / 2,
         ease: "power3.out",
@@ -30,12 +26,11 @@ export default function Logo() {
         ease: "power4.inOut",
         onStart: () => {
           gsap.to("#LogoPic img", {
-            opacity: 0,
+            opacity: 0.1,
             duration: 0.5,
             onComplete: () => {
               setLogoSrc("Rectangle 17.svg");
               setVectorSrc("Vector.svg");
-
               gsap.to("#LogoPic img", {
                 opacity: 1,
                 duration: 0.5,
@@ -44,7 +39,7 @@ export default function Logo() {
           });
         },
       });
-  });
+  }, []);
 
   return (
     <div className="relative w-1/6 ">

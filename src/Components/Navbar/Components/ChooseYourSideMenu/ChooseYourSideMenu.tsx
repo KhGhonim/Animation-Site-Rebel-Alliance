@@ -1,9 +1,8 @@
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-gsap.registerPlugin(useGSAP);
+import { useEffect } from "react";
 
 function ChooseYourSideMenu() {
-  useGSAP(() => {
+  useEffect(() => {
     const tl = gsap.timeline();
     tl.from("#chooseYourSide", { x: 500 })
       .to("#chooseYourSide", {
@@ -31,7 +30,7 @@ function ChooseYourSideMenu() {
           });
         },
       });
-  });
+  }, []);
   return (
     <div
       id="chooseYourSide"
