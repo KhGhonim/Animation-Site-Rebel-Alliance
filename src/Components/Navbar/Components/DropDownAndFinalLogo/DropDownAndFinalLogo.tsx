@@ -1,10 +1,8 @@
 import DropDown from "./DropDown";
 import FinalLogo from "./FinalLogo";
 
-interface DropDownAndFinalLogoProps {
-  setLoading: (value: boolean) => void;
-}
-function DropDownAndFinalLogo({ setLoading }: DropDownAndFinalLogoProps) {
+
+function DropDownAndFinalLogo() {
 
   return (
     <div className="flex flex-row w-4/6 justify-center items-center relative ">
@@ -23,7 +21,7 @@ function DropDownAndFinalLogo({ setLoading }: DropDownAndFinalLogoProps) {
         dropDownItems={["Ewok", "Sullustan", "Wookiee"]}
         Classes={"absolute left-0"}
       />
-      <FinalLogo setLoading={setLoading} />
+      <FinalLogo />
       <DropDown
         title="Weapons"
         dropDownItems={[

@@ -1,5 +1,7 @@
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+gsap.registerPlugin(useGSAP);
 
 interface AlphabaticLoaderProps {
   onComplete: () => void;
@@ -8,43 +10,46 @@ interface AlphabaticLoaderProps {
 
 function AlphabaticLoader({ onComplete, onUpdate }: AlphabaticLoaderProps) {
   const Ref = useRef(null);
-  useEffect(() => {
-    const tl = gsap.timeline();
-    tl.fromTo(
-      "#MadeBy",
-      { opacity: 0, y: 100 },
-      {
-        opacity: 1,
-        delay: 2,
-        y: 0,
-        duration: 2,
-        ease: "power2.inOut",
-        overwrite: false,
-      }
-    ).fromTo(
-      "#Name",
-      { opacity: 0, y: 100 },
-      {
-        opacity: 1,
-        delay: 1,
-        y: 0,
-        duration: 2,
-        ease: "power3.inOut",
-        onUpdate: () => {
-          const currentProgress = tl.progress() * 100;
-          onUpdate(currentProgress);
-        },
-        onComplete: () => {
-          gsap.to(Ref.current, {
-            y: "-100%",
-            duration: 1.5,
-            ease: "power3.inOut",
-            onComplete,
-          });
-        },
-      }
-    );
-  }, [onComplete, onUpdate]);
+  useGSAP(
+    () => {
+      const tl = gsap.timeline();
+      tl.fromTo(
+        "#MadeBy",
+        { opacity: 0, y: 100 },
+        {
+          opacity: 1,
+          delay: 2,
+          y: 0,
+          duration: 2,
+          ease: "power2.inOut",
+          overwrite: false,
+        }
+      ).fromTo(
+        "#Name",
+        { opacity: 0, y: 100 },
+        {
+          opacity: 1,
+          delay: 1,
+          y: 0,
+          duration: 2,
+          ease: "power3.inOut",
+          onUpdate: () => {
+            const currentProgress = tl.progress() * 100;
+            onUpdate(currentProgress);
+          },
+          onComplete: () => {
+            gsap.to(Ref.current, {
+              y: "-100%",
+              duration: 1.5,
+              ease: "power3.inOut",
+              onComplete,
+            });
+          },
+        }
+      );
+    },
+    { scope: Ref }
+  );
 
   return (
     <div

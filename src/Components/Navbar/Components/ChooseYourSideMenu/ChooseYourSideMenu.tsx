@@ -4,17 +4,18 @@ import { useEffect } from "react";
 function ChooseYourSideMenu() {
   useEffect(() => {
     const tl = gsap.timeline();
-    tl.from("#chooseYourSide", { x: 500 })
+    tl.from("#chooseYourSide", { x: 500, duration: 2, ease: "back.in" })
       .to("#chooseYourSide", {
-        duration: 2.5,
-        ease: "back.in",
         x: 0,
+        duration: 1.5,
+        ease: "power2.inOut",
         delay: 0.5,
       })
       .from("#chooseYourSideBox", {
         backgroundColor: "#000000",
         color: "#18FFFF",
         width: "188px",
+        duration: 1.5,
       })
       .to("#chooseYourSideBox", {
         duration: 1.5,

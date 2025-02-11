@@ -18,7 +18,7 @@ function App() {
     <div className="w-full h-dvh overflow-hidden permanent-marker-regular bg-black text-white">
       {showContent && (
         <>
-          <Navbar setLoading={setShowContent} />
+          <Navbar />
           <HeroSection setLoading={setShowContent} />
           <MiddleSections />
           <Footer />

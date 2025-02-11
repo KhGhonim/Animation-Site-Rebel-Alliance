@@ -1,25 +1,25 @@
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useEffect } from "react";
+gsap.registerPlugin(useGSAP);
 
 function TringleAndPhoto() {
-  useEffect(() => {
-    const tl1 = gsap.timeline({});
-    const tl2 = gsap.timeline({});
-    tl1.from("#trianglePic", { y: 120, opacity: 0 }).to("#trianglePic", {
-      y: 0,
-      delay: 3,
-      duration: 2,
-      opacity: 1,
-    });
-    tl2
-      .from("#Selfmade_by_NICF", { x: -1500, opacity: 0 })
-      .to("#Selfmade_by_NICF", {
-        x: 0,
-        delay: 3,
-        duration: 2.5,
+  useGSAP(() => {
+    const ctx = gsap.context(() => {
+      const tl1 = gsap.timeline({ defaults: { delay: 3, duration: 2 } });
+      const tl2 = gsap.timeline({ defaults: { delay: 3, duration: 2.5 } });
+      tl1.from("#trianglePic", { y: 120, opacity: 0 }).to("#trianglePic", {
+        y: 0,
         opacity: 1,
       });
-  }, []);
+      tl2
+        .from("#Selfmade_by_NICF", { x: -1500, opacity: 0 })
+        .to("#Selfmade_by_NICF", {
+          x: 0,
+          opacity: 1,
+        });
+    });
+    return () => ctx.revert();
+  });
   return (
     <>
       <div className=" w-full z-30">
@@ -34,7 +34,7 @@ function TringleAndPhoto() {
 
         <div
           id="Selfmade_by_NICF"
-          className=" w-28  absolute top-[40%] right-[18rem] transform -translate-x-1/4 -translate-y-1/2"
+          className=" w-28  absolute top-[38%] right-[5%] md:right-[10%] lg:right-[20%] transform -translate-x-1/4 -translate-y-1/2"
         >
           <img
             className="w-full h-full object-cover"

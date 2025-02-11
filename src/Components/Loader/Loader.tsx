@@ -1,6 +1,6 @@
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useEffect } from "react";
-
+gsap.registerPlugin(useGSAP);
 interface LoaderProps {
   onComplete: (value: boolean) => void;
   onUpdate: (progress: number) => void;
@@ -8,7 +8,7 @@ interface LoaderProps {
 }
 
 function Loader({ onComplete, onUpdate, Photo }: LoaderProps) {
-  useEffect(() => {
+  useGSAP(() => {
     const tl = gsap.timeline();
     tl.to("#LoaderPic", {
       duration: 2,
@@ -38,7 +38,7 @@ function Loader({ onComplete, onUpdate, Photo }: LoaderProps) {
       },
       "-=1.5"
     );
-  }, [onComplete, onUpdate]);
+  });
   return (
     <div
       style={{
